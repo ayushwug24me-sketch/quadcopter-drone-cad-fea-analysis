@@ -1,0 +1,13 @@
+# encoding: utf-8
+# 2026 R1
+SetScriptVersion(Version="26.1.174")
+Save(Overwrite=True)
+Archive(
+    FilePath="D:/Desktop/ANSYSSSS/DRONEE/archive_DRONE.wbpz",
+    IncludeExternalImportedFiles=True)
+system1 = GetSystem(Name="SYS")
+results1 = system1.GetContainer(ComponentName="Results")
+results1.Edit()
+resultsComponent1 = system1.GetComponent(Name="Results")
+resultsComponent1.Update(AllDependencies=True)
+Save(Overwrite=True)

@@ -1,0 +1,13 @@
+# ANSYS extracted working folders
+dp0/
+dpall/
+
+# Temporary/OS files
+Thumbs.db
+.DS_Store
+*.tmp
+*.bak
+
+# Python cache
+__pycache__/
+*.pyc

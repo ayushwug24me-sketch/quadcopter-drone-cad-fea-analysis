@@ -1,0 +1,12 @@
+# encoding: utf-8
+# 2026 R1
+SetScriptVersion(Version="26.1.174")
+system1 = GetSystem(Name="SYS")
+results1 = system1.GetContainer(ComponentName="Results")
+results1.Edit()
+system2 = GetSystem(Name="SYS 1")
+results2 = system2.GetContainer(ComponentName="Results")
+results2.Edit()
+results1.Edit()
+results2.Edit()
+Save(Overwrite=True)
