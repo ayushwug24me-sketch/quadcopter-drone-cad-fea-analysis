@@ -1,81 +1,109 @@
-# Quadcopter — SolidWorks CAD to ANSYS FEA
+# Quadcopter Drone — SolidWorks CAD & ANSYS FEA
 
-A complete mechanical-engineering workflow for a quadcopter frame, covering CAD modeling, assembly, static structural analysis, modal analysis, and harmonic response analysis.
+A complete mechanical engineering project covering **3D CAD design, assembly development, mass-property evaluation, finite-element analysis, modal analysis, and harmonic response analysis** of a quadcopter frame.
 
-## Project Workflow
+The project follows a complete CAD-to-CAE workflow:
 
-**SolidWorks CAD → Complete Assembly → ANSYS Mechanical → Static Structural → Modal Analysis → Harmonic Response**
+**SolidWorks Part Design → Assembly → Mass Properties → ANSYS Setup → Static Structural → Modal → Harmonic Response**
 
-## Repository Contents
+---
+
+## 📌 Project Overview
+
+This project presents the mechanical design and structural/vibration analysis of a quadcopter developed in SolidWorks and analyzed using ANSYS Mechanical.
+
+Individual mechanical components were modeled in SolidWorks and assembled into a complete quadcopter containing the structural frame, arms, motors, propellers, covers, stands, controller unit, and fastening hardware.
+
+The completed CAD assembly was then used as the basis for finite-element analysis in ANSYS Mechanical.
+
+The analysis consists of:
+
+- Static Structural Analysis
+- Modal Analysis
+- Harmonic Response Analysis
+
+The objective is to evaluate:
+
+- Structural deformation
+- Equivalent von-Mises stress
+- Equivalent elastic strain
+- Factor of safety against yielding
+- Natural frequencies
+- Mode shapes
+- Frequency-dependent dynamic response
+- Resonance-sensitive regions
+
+---
+
+## 🛠️ Software Used
+
+| Software | Version / Platform |
+|---|---|
+| SolidWorks | Design 2026 SP3.2 |
+| ANSYS Mechanical | 2026 R1 Student |
+| Git / GitHub | Version-controlled project repository |
+| Git LFS | Large ANSYS Workbench archive |
+
+---
+
+## 🔧 Project Specifications
+
+| Parameter | Value |
+|---|---:|
+| Assembly mass | **4.15 kg** |
+| Structural load | **32 N × 4 arms = 128 N** |
+| Mesh size | **10 mm** |
+| Material basis | **PETG-based** |
+| Young's modulus | **2.1 GPa** |
+| Poisson's ratio | **0.35** |
+| Tensile yield strength | **50 MPa** |
+| Static maximum stress | **1.3927 MPa** |
+| Static maximum deformation | **0.86549 mm** |
+| Modal frequency range | **72.582–89.971 Hz** |
+| Harmonic sweep | **1–150 Hz** |
+| Critical harmonic region | **≈90 Hz** |
+
+The reported assembly mass of 4.15 kg is the SolidWorks model value used for the project analysis. The report notes that one or more components have overridden mass properties, so this should be interpreted as the model value rather than an independently measured physical mass. :contentReference[oaicite:1]{index=1}
+
+---
+
+# 📂 Repository Structure
 
 ```text
 quadcopter-drone-cad-fea-analysis/
+│
 ├── 01_SolidWorks_CAD/
 │   ├── Parts/
+│   │   ├── 01_Structural/
+│   │   ├── 02_Covers_Mounting/
+│   │   ├── 03_Propulsion/
+│   │   └── 04_Fasteners/
+│   │
 │   ├── Assembly/
+│   │   ├── 01_Complete_Drone_Assembly/
+│   │   └── 02_Analysis_Assembly/
+│   │
 │   ├── Drawings/
 │   └── CAD_PART_INVENTORY.md
+│
 ├── 02_ANSYS/
 │   ├── 01_Static_Structural/
 │   ├── 02_Modal/
 │   ├── 03_Harmonic_Response/
-│   ├── 04_Workbench_Archive/
-│   └── README.md
+│   └── 04_Workbench_Archive/
+│       └── archive_DRONE.wbpz
+│
 ├── 03_Report/
 │   └── Complete_Engineering_Report.pdf
+│
 ├── 04_Images/
 │   ├── 01_CAD_Assembly/
 │   ├── 02_ANSYS_Setup/
 │   ├── 03_Static_Structural/
 │   ├── 04_Modal/
 │   └── 05_Harmonic_Response/
-├── README.md
+│
 ├── .gitattributes
 ├── .gitignore
-└── LICENSE
-```
-
-## Key Results From the Supplied Report
-
-| Analysis | Reported result |
-|---|---|
-| Assembly mass | 4.15 kg |
-| Applied structural loading | 32 N per arm; 128 N total |
-| Maximum von-Mises stress | 1.3927 MPa |
-| Maximum total deformation | 0.86549 mm |
-| Equivalent elastic strain | 0.00066362 mm/mm |
-| Yield-based factor of safety | ≈35.9 |
-| Modal frequencies | 72.582, 72.605, 72.618, 72.620, 89.963, 89.971 Hz |
-| Harmonic sweep | 1–150 Hz |
-| Main harmonic response region | ≈90 Hz |
-| Peak harmonic stress amplitude | ≈0.0151 MPa |
-| Peak harmonic deformation amplitude | ≈0.186 mm |
-
-## ANSYS System Mapping
-
-The supplied Workbench archive contains three analysis systems under `dp0`:
-
-- `SYS` → **Static Structural**
-- `SYS-1` → **Modal Analysis**
-- `SYS-2` → **Harmonic Response**
-
-These labels are used for repository organization; the original ANSYS archive remains unchanged.
-
-## CAD Assemblies
-
-Two assemblies are preserved separately because they serve different purposes:
-
-- **Complete Drone Assembly** — the full quadcopter assembly.
-- **Analysis Assembly** — the smaller assembly used for the analysis workflow.
-
-## Engineering Drawings
-
-The supplied 21-page drawing document is preserved at `01_SolidWorks_CAD/Drawings/Part_Dimensions_and_Assembly_Drawings.pdf`. It is the dimensional/drawing reference supplied for the CAD parts and assembly.
-
-## Notes on Large ANSYS Files
-
-The original `archive_DRONE.wbpz` is approximately 362 MB and contains the ANSYS Workbench project and solver data. `.wbpz` is configured for Git LFS in `.gitattributes`. Do not manually extract, rename, or delete internal Workbench files when preserving the source archive.
-
-## Software
-
-The supplied report identifies SolidWorks 2026 SP3.2 and ANSYS Mechanical 2026 R1 Student.
+├── LICENSE
+└── README.md
